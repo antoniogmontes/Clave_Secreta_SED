@@ -1,3 +1,5 @@
 Clave_Secreta_SED.*/
 *.wpc
 *.lpr
+*.log
+*.jou
