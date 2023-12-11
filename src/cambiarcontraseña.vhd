@@ -15,6 +15,7 @@ Port(
            clk : in STD_LOGIC;
            modo : in STD_LOGIC;
            boton : in STD_LOGIC_VECTOR (4 downto 0);
+           antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
            new_Code : out STD_LOGIC_VECTOR (7 downto 0);
            digito : out STD_LOGIC_VECTOR (1 downto 0);
            RESET : in std_logic
@@ -52,7 +53,6 @@ begin
         when S0 =>
         if (boton(0) = '1') or ( boton(1) = '1')or ( boton(2) = '1')or ( boton(3) = '1')   then
         next_state <= S1;
-        
         end if;
         when S1 =>
         if (boton(0) = '1') or ( boton(1) = '1')or ( boton(2) = '1')or ( boton(3) = '1')  then
@@ -78,7 +78,9 @@ begin
         end if;
         when others =>
         next_state <= S0;
-        end case;    
+        end case;  
+    elsif(modo='0') then 
+        next_state <= S0;   
     end if;
     
 end process;
@@ -124,6 +126,9 @@ output_decod: process (current_state, modo, boton)
         
         new_code<=codigo;
         
+     elsif (modo='0') then 
+        codigo<= antigua_Con;
+        new_code<=antigua_Con;    
     end if;
  end process;
 
