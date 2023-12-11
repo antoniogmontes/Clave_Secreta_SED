@@ -4,12 +4,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity comparador is
  PORT (
- CLK : in std_logic; --Clock
- mode : in std_logic; -- Selector de modo | Modo 1(Comprobar) Modo 0(Nueva contraseña)
- new_Code : in std_logic_vector(7 downto 0); -- Nueva contaseña
- code_In : in std_logic_vector(7 downto 0); -- Comprobar contraseña
- led_RGB : out std_logic_vector(2 downto 0) -- Led RGB
- -- RESET : in std_logic - No necesario reloj dentro del comparador
+     CLK      : in std_logic; --Clock
+     mode     : in std_logic; -- Selector de modo | Modo 0(Desbloquear) Modo 1(Nueva contraseña)
+     new_Code : in std_logic_vector(7 downto 0); -- Nueva contaseña
+     code_In  : in std_logic_vector(7 downto 0); -- Comprobar contraseña
+     led_RGB  : out std_logic_vector(2 downto 0); -- Led RGB
+     code_Out : out std_logic_vector(7 downto 0)
  );
 end comparador;
 
@@ -36,6 +36,7 @@ begin
             end if;
         end if;
         end if;
+        code_Out <= comparador;
     end process;
 
 end Behavioral;
