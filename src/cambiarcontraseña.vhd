@@ -10,7 +10,6 @@ entity fsm_Cambiar_contrasena is
         boton : in STD_LOGIC_VECTOR (4 downto 0);
         antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
         new_Code : out STD_LOGIC_VECTOR (7 downto 0);
-        digito : out STD_LOGIC_VECTOR (1 downto 0);
         RESET : in std_logic
     );
 end fsm_Cambiar_contrasena;
@@ -101,16 +100,12 @@ end process;
                 --Cambiar lo que pasemos, otra cosa distinta
                 codigo<=(OTHERS=>'0');
             when S1 =>
-                digito <= num;
                 codigo <= num (1 downto 0) & codigo(5 downto 0);
             when S2 =>
-                digito <= num;
                 codigo <= codigo(7 downto 6) & num (1 downto 0) & codigo(3 downto 0);
             when S3 =>
-                digito <= num;
                 codigo <= codigo(7 downto 4) & num (1 downto 0) & codigo(1 downto 0);
             when S4 =>
-                digito <= num;
                 codigo <= codigo(7 downto 2) & num (1 downto 0);
             when others =>
                 codigo<=(OTHERS=>'0');

@@ -59,7 +59,6 @@ architecture structural of top is
            boton       : in STD_LOGIC_VECTOR (4 downto 0);
            antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
            new_Code    : out STD_LOGIC_VECTOR (7 downto 0);
-           digito      : out STD_LOGIC_VECTOR (1 downto 0);
            RESET       : in std_logic
         );
     end component;
@@ -70,7 +69,6 @@ architecture structural of top is
            boton     : in STD_LOGIC_VECTOR (4 downto 0);
            CODE_OUT  : out STD_LOGIC_VECTOR (7 downto 0);
            LED_OUT   : out STD_LOGIC_VECTOR (3 downto 0);
-           digito    : out STD_LOGIC_VECTOR (1 downto 0);
            RESET     : in std_logic
         );
     end component;       

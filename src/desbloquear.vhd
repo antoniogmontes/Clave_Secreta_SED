@@ -9,7 +9,6 @@ entity fsm_Desbloquear is
         boton : in STD_LOGIC_VECTOR (4 downto 0);
         CODE_OUT : out STD_LOGIC_VECTOR (7 downto 0);
         LED_OUT   : out STD_LOGIC_VECTOR (3 downto 0);
-        digito : out STD_LOGIC_VECTOR (1 downto 0);
         RESET : in std_logic
     );
 end fsm_Desbloquear;
@@ -103,19 +102,15 @@ begin
                 codigo <= (OTHERS => '0');
             when S1 =>
                 LED <= "0001";
-                digito <= num;
                 codigo <= num (1 downto 0) & codigo(5 downto 0);
             when S2 =>
                 LED <= "0011";
-                digito <= num;
                 codigo <= codigo(7 downto 6) & num (1 downto 0) & codigo(3 downto 0);
             when S3 =>
                 LED <= "0111";
-                digito <= num;
                 codigo <= codigo(7 downto 4) & num (1 downto 0) & codigo(1 downto 0);
             when S4 =>
                 LED <= "1111";
-                digito <= num;
                 codigo <= codigo(7 downto 2) & num (1 downto 0);
             when others =>
             codigo <= (OTHERS => '0');
