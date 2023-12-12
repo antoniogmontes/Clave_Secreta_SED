@@ -26,7 +26,23 @@ architecture structural of top is
         );
     end component;
     
-    component display
+    component SYNCHRNZR
+        PORT (
+          CLK      : in  std_logic;
+          ASYNC_IN : in  std_logic;
+          SYNC_OUT : out std_logic
+        );
+     end component;
+    
+     component EDGEDTCTR
+        PORT (
+          CLK     : in std_logic;
+          SYNC_IN : in std_logic;
+          EDGE    : out std_logic
+        );
+    end component;
+  
+    component DISPLAY
         PORT (
          CODE_IN : in  STD_LOGIC_VECTOR(7 downto 0);
          RST_N   : in  STD_LOGIC;
@@ -62,6 +78,7 @@ begin
 fsm_mode_inst: fsm_mode
     PORT MAP(
         CLK=>CLK,
+        SWITCH=>SWITCH,
         
     );
 

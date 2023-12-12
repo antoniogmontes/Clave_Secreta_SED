@@ -1,4 +1,7 @@
 Clave_Secreta_SED.*/
+*.rtd
+*.rpt
+*.tcl
 *.wpc
 *.lpr
 *.log
