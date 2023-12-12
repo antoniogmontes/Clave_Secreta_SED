@@ -24,6 +24,7 @@ architecture structural of top is
         MODE       : out std_logic;
         LEDRGB_OUT :out std_logic_vector(2 downto 0)
         );
+        
     end component;
     
     component SYNCHRNZR
