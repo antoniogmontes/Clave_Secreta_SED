@@ -8,8 +8,8 @@ entity top is
         boton             : in  std_logic_vector (4 downto 0);
         SWITCH            : in  std_logic;
         RESET             : in  std_logic;                  -- Señal de reset
-        LEDRBG_comparador : out std_logic_vector(2 downto 0);
-        LEDRBG_modo       : out std_logic_vector(2 downto 0);
+        LEDRGB_comparador : out std_logic_vector(2 downto 0);
+        LEDRGB_modo       : out std_logic_vector(2 downto 0);
         LED               : out std_logic_vector(3 downto 0);
         segment           : out std_logic_vector(6 downto 0)
     );
@@ -71,14 +71,26 @@ architecture structural of top is
            LED_OUT   : out STD_LOGIC_VECTOR (3 downto 0);
            RESET     : in std_logic
         );
-    end component;       
+    end component;  
+    
+    -- Señal intermedia para sincronización
+    signal sync_signal : std_logic; 
+    -- Señal intermedia para EL MODO
+    signal mode_signal : std_logic;    
 begin
 
 fsm_mode_inst: fsm_mode
     PORT MAP(
-        CLK=>CLK,
-        SWITCH=>SWITCH,
-        
+        CLK        => CLK,
+        SWITCH     => SWITCH,
+        MODE       => mode_signal,
+        LEDRGB_OUT => LEDRGB_modo    
+    );
+Sync_inst: SYNCHRNZR
+    PORT MAP (
+        CLK      => clk,
+        ASYNC_IN => boton(0),
+        SYNC_OUT => sync_signal
     );
 
 end structural;
