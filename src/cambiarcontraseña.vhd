@@ -101,7 +101,7 @@ output_decod: process (current_state, modo, boton)
         elsif (boton(3) = '1') then 
             num <= "11";
         elsif boton(4)='1' then 
-            num <= "00";
+            num <= "XX";
         end if;
         
         case current_state is

@@ -31,37 +31,37 @@ state_register: process (CLK)
  
 
     case current_state is
-    when DESBLOQUEO =>
-    if SWITCH = '1' then
-    next_state <= CAMBIO_CLAVE;
-    end if;
-    when CAMBIO_CLAVE =>
-    if SWITCH = '1' then
-    next_state <= DESBLOQUEO;
-    end if;
-    when others =>
-    next_state <= DESBLOQUEO;
+        when DESBLOQUEO =>
+        if SWITCH = '1' then
+        next_state <= CAMBIO_CLAVE;
+        end if;
+        when CAMBIO_CLAVE =>
+        if SWITCH = '1' then
+        next_state <= DESBLOQUEO;
+        end if;
+        when others =>
+        next_state <= DESBLOQUEO;
     end case;
 end process;
 
  output_decod: process (current_state,LEDRGB)
  begin
  
-if current_state'event then
-    MODE <= '0';
-    LEDRGB <= "000";
-    case current_state is
-    when DESBLOQUEO =>
-    MODE <= '0';
-    LEDRGB <= "101";
-    when CAMBIO_CLAVE =>
-    MODE <= '1';
-    LEDRGB <= "001";
-    when others =>
-    MODE <= '0';
-   LEDRGB <= "000";
-    end case;
-end if;
+    if current_state'event then
+        MODE <= '0';
+        LEDRGB <= "000";
+            case current_state is
+                when DESBLOQUEO =>
+                MODE <= '0';
+                LEDRGB <= "101";
+                when CAMBIO_CLAVE =>
+                MODE <= '1';
+                LEDRGB <= "001";
+                when others =>
+                MODE <= '0';
+                LEDRGB <= "000";
+            end case;
+      end if;
+      LEDRGB_OUT<=LEDRGB;
  end process;
-
 end Behavioral;
