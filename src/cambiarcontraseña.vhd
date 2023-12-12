@@ -1,16 +1,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
-entity fsmCambiarcontrasena is
+entity fsm_Cambiar_contrasena is
     Port(
         clk : in STD_LOGIC;
         modo : in STD_LOGIC;
@@ -20,9 +13,9 @@ entity fsmCambiarcontrasena is
         digito : out STD_LOGIC_VECTOR (1 downto 0);
         RESET : in std_logic
     );
-end fsmCambiarcontrasena;
+end fsm_Cambiar_contrasena;
 
-architecture Behavioral of fsmCambiarcontrasena is
+architecture Behavioral of fsm_Cambiar_contrasena is
 
     type STATES is (S0, S1, S2, S3, S4);
     signal current_state: STATES := S0;

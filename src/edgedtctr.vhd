@@ -11,6 +11,7 @@ end EDGEDTCTR;
 
 architecture BEHAVIORAL of EDGEDTCTR is
     signal sreg : std_logic_vector(2 downto 0);
+    
 begin
     
     process (CLK)

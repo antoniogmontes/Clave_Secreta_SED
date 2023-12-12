@@ -3,21 +3,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
 
 entity top is
-  PORT (
-    CLK               : in  std_logic;                  -- Reloj
-    boton             : in  std_logic_vector (4 downto 0);
-    SWITCH            : in  std_logic;
-    RESET             : in  std_logic;                  -- Señal de reset
-    LEDRBG_comparador : out std_logic_vector(2 downto 0);
-    LEDRBG_modo       : out std_logic_vector(2 downto 0);
-    LED               : out std_logic_vector(3 downto 0);
-    segment           : out std_logic_vector(6 downto 0)
-  );
+    PORT (
+        CLK               : in  std_logic;                  -- Reloj
+        boton             : in  std_logic_vector (4 downto 0);
+        SWITCH            : in  std_logic;
+        RESET             : in  std_logic;                  -- Señal de reset
+        LEDRBG_comparador : out std_logic_vector(2 downto 0);
+        LEDRBG_modo       : out std_logic_vector(2 downto 0);
+        LED               : out std_logic_vector(3 downto 0);
+        segment           : out std_logic_vector(6 downto 0)
+    );
 end top;
 
 architecture structural of top is
 
-    component FSM_MODE
+    component fsm_mode
         PORT (
         CLK        : in std_logic;
         SWITCH     : in std_logic;
@@ -26,7 +26,7 @@ architecture structural of top is
         );
     end component;
     
-    component DISPLAY
+    component display
         PORT (
          CODE_IN : in  STD_LOGIC_VECTOR(7 downto 0);
          RST_N   : in  STD_LOGIC;
@@ -35,7 +35,7 @@ architecture structural of top is
          ANODE   : out std_logic_vector(3 downto 0)
         );
     end component;
-    component fsmCambiarcontrasena
+    component fsm_Cambiar_contrasena
         PORT (
            clk         : in STD_LOGIC;
            modo        : in STD_LOGIC;
@@ -46,7 +46,7 @@ architecture structural of top is
            RESET       : in std_logic
         );
     end component;
-    component fsmDesbloquear
+    component fsm_Desbloquear
         PORT ( 
            clk       : in STD_LOGIC;
            modo      : in STD_LOGIC;
@@ -59,7 +59,7 @@ architecture structural of top is
     end component;       
 begin
 
-FSM_MODE_inst: FSM_MODE
+fsm_mode_inst: fsm_mode
     PORT MAP(
         CLK=>CLK,
         
