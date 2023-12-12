@@ -10,7 +10,7 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity fmsCambiarcontrasena is
+entity fsmCambiarcontrasena is
 Port(
            clk : in STD_LOGIC;
            modo : in STD_LOGIC;
@@ -20,9 +20,9 @@ Port(
            digito : out STD_LOGIC_VECTOR (1 downto 0);
            RESET : in std_logic
           );
-end fmsCambiarcontrasena;
+end fsmCambiarcontrasena;
 
-architecture Behavioral of fmsCambiarcontrasena is
+architecture Behavioral of fsmCambiarcontrasena is
 
  type STATES is (S0, S1, S2, S3, S4);
  signal current_state: STATES := S0;

@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity fmsDesbloquear is
+entity fsmDesbloquear is
 Port(
            clk : in STD_LOGIC;
            modo : in STD_LOGIC;
@@ -12,9 +12,9 @@ Port(
            digito : out STD_LOGIC_VECTOR (1 downto 0);
            RESET : in std_logic
           );
-end fmsDesbloquear;
+end fsmDesbloquear;
 
-architecture Behavioral of fmsDesbloquear is
+architecture Behavioral of fsmDesbloquear is
 
  type STATES is (S0, S1, S2, S3, S4);
  signal current_state: STATES := S0;
