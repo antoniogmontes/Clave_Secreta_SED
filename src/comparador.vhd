@@ -32,7 +32,7 @@ begin
                 -- Modo nueva contraseña (Cambiamos la contraseña)
                 comparador <= new_Code;
                 -- El comparador no hace nada 
-                led_RGB <= "011"; -- Prueba led amarillo, si funciona el cambiar contraseña
+                --led_RGB <= "011"; -- Prueba led amarillo, si funciona el cambiar contraseña
             end if;
         end if;
         end if;
