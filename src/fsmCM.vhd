@@ -34,7 +34,7 @@ begin
                     next_state <= CAMBIO_CLAVE;
                 end if;
             when CAMBIO_CLAVE =>
-                if SWITCH = '1' then
+                if SWITCH = '0' then
                     next_state <= DESBLOQUEO;
                 end if;
             when others =>
