@@ -44,7 +44,7 @@ begin
 
     output_decod: process (current_state,LEDRGB)
     begin
-        if current_state'event then
+       -- if current_state'event then
             MODE <= '0';
             LEDRGB <= "000";
             case current_state is
@@ -58,7 +58,7 @@ begin
                     MODE <= '0';
                     LEDRGB <= "000";
             end case;
-        end if;
+     --   end if;
         
         LEDRGB_OUT<=LEDRGB;
     end process;

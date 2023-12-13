@@ -113,7 +113,7 @@ fsm_mode_inst: fsm_mode
         LEDRGB_OUT => LEDRGB_modo    
     );
 
-    syncrs: for i in 1 to 5 generate
+    syncrs: for i in 0 to 4 generate
     begin
         synchro_inst: SYNCHRNZR0
             port map (
