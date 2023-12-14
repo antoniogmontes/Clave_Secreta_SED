@@ -4,8 +4,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity DISPLAY is
   generic (
-    --CLKIN_FREQ : positive := 100_000_000;
-    CLKIN_FREQ : positive :=       1_600;
+    CLKIN_FREQ : positive := 100_000_000;
+    --CLKIN_FREQ : positive :=       1_600;
     RFRSH_FREQ : positive :=         400
   );
   port (
