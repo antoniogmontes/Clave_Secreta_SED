@@ -28,7 +28,7 @@ begin
   
     nextstate_decod: process (SWITCH, current_state)
     begin
-        case current_state is
+           case current_state is
             when DESBLOQUEO =>
                 if SWITCH = '1' then
                     next_state <= CAMBIO_CLAVE;
