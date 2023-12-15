@@ -29,7 +29,7 @@ begin
     state_register: process (RESET, CLK, modo)
     begin
         -- Completar
-       if(RESET='0' and modo='1')then
+       if(RESET='0' and modo='0')then
             current_state<=S0;
        elsif (rising_edge(CLK)) then
             current_state<=next_state;
@@ -39,7 +39,7 @@ begin
     --Proceso de asignar nuevo estado
     nextstate_decod: process (boton, current_state,modo)
     begin
-        if modo='1' then 
+        if modo='0' then 
             next_state <= current_state;
             case current_state is
             when S0 =>
@@ -80,7 +80,7 @@ begin
     --Proceso de salidas
     output_decod: process (boton, current_state, modo, LED)
     begin
-        if modo='1' then
+        if modo='0' then
     
             --Asignamos cada botón a un valor
             if (boton(0) = '1') then 
