@@ -60,8 +60,9 @@ architecture structural of top is
            clk         : in STD_LOGIC;
            modo        : in STD_LOGIC;
            boton       : in STD_LOGIC_VECTOR (4 downto 0);
-           antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
+          -- antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
            new_Code    : out STD_LOGIC_VECTOR (7 downto 0);
+           DONE1       :out std_logic;
            RESET       : in std_logic
         );
     end component;
@@ -73,6 +74,7 @@ architecture structural of top is
            boton     : in STD_LOGIC_VECTOR (4 downto 0);
            CODE_OUT  : out STD_LOGIC_VECTOR (7 downto 0);
            LED_OUT   : out STD_LOGIC_VECTOR (3 downto 0);
+           DONE0     :out std_logic;
            RESET     : in std_logic
         );
     end component;  
@@ -82,8 +84,10 @@ component comparador
            mode     : in std_logic; -- Selector de modo | Modo 0(Desbloquear) Modo 1(Nueva contraseña)
            new_Code : in std_logic_vector(7 downto 0); -- Nueva contaseña
            code_In  : in std_logic_vector(7 downto 0); -- Comprobar contraseña
-           led_RGB  : out std_logic_vector(2 downto 0); -- Led RGB
-           code_Out : out std_logic_vector(7 downto 0)
+           DONE0    : in std_logic;
+           DONE1    : in std_logic; 
+           led_RGB  : out std_logic_vector(2 downto 0) -- Led RGB
+           --code_Out : out std_logic_vector(7 downto 0)
         );
     end component;    
 
@@ -98,9 +102,13 @@ component comparador
     -- Señal intermedia para CODEOUT DEL DESBLOQUEAR
     signal codeout_signal : std_logic_vector(7 downto 0);
     -- Señal intermedia para mantiene la antigua contraseña
-    signal antigua_signal : std_logic_vector(7 downto 0);
+--signal antigua_signal : std_logic_vector(7 downto 0);
     -- Señal intermedia para codeut cambia
-    signal newcode_signal : std_logic_vector(7 downto 0);  
+    signal newcode_signal : std_logic_vector(7 downto 0);
+    --señales confirmacion maquinas de estados
+    signal done0_signal :std_logic;
+    signal done1_signal :std_logic;
+       
 begin
     async_inputs <= boton;
 --    syncd_inputs : std_logic_vector(5 downto 0);
@@ -134,25 +142,28 @@ fsm_Desbloquear_inst: fsm_Desbloquear
         CLK=>CLK,
         MODO=>mode_signal,
         RESET=>RESET,
+        DONE0=>done0_signal,
         boton(0)=>ce_signal(0),
         boton(1)=>ce_signal(1),
         boton(2)=>ce_signal(2),
         boton(3)=>ce_signal(3),
         boton(4)=>ce_signal(4),
         CODE_OUT=>codeout_signal,
-        LED_OUT=>LED 
+        LED_OUT=>LED
+         
     );
 fsm_cambiar_contrasena_inst: fsm_Cambiar_contrasena
     PORT MAP(
         CLK=>CLK,
         modo=>mode_signal,
         RESET=>RESET,
+        DONE1=>done1_signal,
         boton(0)=>ce_signal(0),
         boton(1)=>ce_signal(1),
         boton(2)=>ce_signal(2),
         boton(3)=>ce_signal(3),
         boton(4)=>ce_signal(4),
-        antigua_con=>antigua_signal,
+        --antigua_con=>antigua_signal,
         new_code =>newcode_signal
     );    
 Display_inst: DISPLAY
@@ -167,9 +178,11 @@ Comparador_inst: comparador
     PORT MAP(
         CLK=>CLK,
         MODE=>mode_signal,
+        DONE0=>done0_signal,
+        DONE1=>done1_signal,
         new_Code=>newcode_signal,
         Code_In=>codeout_signal,
-        Code_Out=>antigua_signal,
+        --Code_Out=>antigua_signal,
         Led_RGB=>LEDRGB_comparador
     );                     
 end structural;

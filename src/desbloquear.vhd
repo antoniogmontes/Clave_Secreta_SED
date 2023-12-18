@@ -9,6 +9,7 @@ entity fsm_Desbloquear is
         boton : in STD_LOGIC_VECTOR (4 downto 0);
         CODE_OUT : out STD_LOGIC_VECTOR (7 downto 0);
         LED_OUT   : out STD_LOGIC_VECTOR (3 downto 0);
+        DONE0 :out std_logic; 
         RESET : in std_logic
     );
 end fsm_Desbloquear;
@@ -24,12 +25,12 @@ architecture Behavioral of fsm_Desbloquear is
     signal LED : STD_LOGIC_VECTOR (3 downto 0) := (others => '0');
  
 begin
-
+    
     --Porceso del reset 
     state_register: process (RESET, CLK, modo)
     begin
         -- Completar
-       if(RESET='0' and modo='1')then
+       if(RESET='0' and modo='0')then
             current_state<=S0;
        elsif (rising_edge(CLK)) then
             current_state<=next_state;
@@ -39,7 +40,7 @@ begin
     --Proceso de asignar nuevo estado
     nextstate_decod: process (boton, current_state,modo)
     begin
-        if modo='1' then 
+        if modo='0' then 
             next_state <= current_state;
             case current_state is
             when S0 =>
@@ -80,7 +81,7 @@ begin
     --Proceso de salidas
     output_decod: process (boton, current_state, modo, LED)
     begin
-        if modo='1' then
+        if modo='0' then
     
             --Asignamos cada botón a un valor
             if (boton(0) = '1') then 
@@ -98,9 +99,12 @@ begin
             case current_state is
             when S0 =>
                 --CAmbiar lo que pasemos, otra cosa distinta
+                DONE0<='0';
                 LED <= "0000";
+            
                 codigo <= (OTHERS => '0');
             when S1 =>
+                --DONE0<='0';
                 LED <= "0001";
                 codigo <= num (1 downto 0) & codigo(5 downto 0);
             when S2 =>
@@ -112,11 +116,13 @@ begin
             when S4 =>
                 LED <= "1111";
                 codigo <= codigo(7 downto 2) & num (1 downto 0);
+                CODE_OUT <= codigo;
+                DONE0<='1';
             when others =>
             codigo <= (OTHERS => '0');
             end case;
             
-            CODE_OUT <= codigo;
+            --CODE_OUT <= codigo;
             LED_OUT <= LED;
         end if;
     end process;

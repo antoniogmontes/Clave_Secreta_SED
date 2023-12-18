@@ -8,8 +8,9 @@ entity fsm_Cambiar_contrasena is
         clk : in STD_LOGIC;
         modo : in STD_LOGIC;
         boton : in STD_LOGIC_VECTOR (4 downto 0);
-        antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
+        --antigua_Con : in STD_LOGIC_VECTOR (7 downto 0);
         new_Code : out STD_LOGIC_VECTOR (7 downto 0);
+        DONE1   : out std_logic;
         RESET : in std_logic
     );
 end fsm_Cambiar_contrasena;
@@ -24,7 +25,7 @@ architecture Behavioral of fsm_Cambiar_contrasena is
     signal codigo : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
  
 begin
-
+        --DONE1<='0';
     --Porceso del reset 
     state_register: process (RESET, CLK, modo)
     begin
@@ -98,8 +99,10 @@ end process;
             case current_state is
             when S0 =>
                 --Cambiar lo que pasemos, otra cosa distinta
+                DONE1<='0';
                 codigo<=(OTHERS=>'0');
             when S1 =>
+                --DONE1<='0';
                 codigo <= num (1 downto 0) & codigo(5 downto 0);
             when S2 =>
                 codigo <= codigo(7 downto 6) & num (1 downto 0) & codigo(3 downto 0);
@@ -107,16 +110,14 @@ end process;
                 codigo <= codigo(7 downto 4) & num (1 downto 0) & codigo(1 downto 0);
             when S4 =>
                 codigo <= codigo(7 downto 2) & num (1 downto 0);
+                new_code<=codigo;
+                DONE1<='1';
             when others =>
                 codigo<=(OTHERS=>'0');
             end case;
             
-            new_code<=codigo;
-            
-        elsif (modo='0') then 
-            codigo<= antigua_Con;
-            new_code<=antigua_Con;    
-        end if;
+            --new_code<=codigo;
+         end if;   
     end process;
 
 end Behavioral;

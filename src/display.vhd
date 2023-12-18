@@ -45,7 +45,7 @@ begin
         end if;
      end process;
  
-     scanner: process (RST_N, CLK)
+     scanner: process (RST_N, CLK, anode_i)
      begin
         if RST_N = '0' then
             anode_i <= ('0', others => '1');
@@ -65,8 +65,11 @@ begin
                 salida1 <= CODE_IN(5 downto 4);
             when "1101"=>
                 salida1 <= CODE_IN(3 downto 2);
+            when "1110"=>
+                salida1 <= CODE_IN(1 downto 0);    
             when others=>
-                salida1 <= CODE_IN(1 downto 0);
+                salida1 <= "XX";
+                
         end case;     
     end process;
 
@@ -80,9 +83,9 @@ begin
             when "10" =>
                 SEGMENT <= "0010010";    
             when "11" =>
-                SEGMENT <= "0000110";
+                SEGMENT <= "0000110";    
             when others =>
-                SEGMENT <= "1111110";    
+                SEGMENT <= "11111111";    
         end case;
     end process;
 end Behavioral;
