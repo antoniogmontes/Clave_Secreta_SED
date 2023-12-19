@@ -14,7 +14,8 @@ entity DISPLAY is
     CLK     : in  STD_LOGIC;
     DONE    : in std_logic;
     SEGMENT : out std_logic_vector(6 downto 0);
-    ANODE   : out std_logic_vector(3 downto 0)
+    ANODE   : out std_logic_vector(3 downto 0);
+    ANODO_A : out std_logic_vector(3 downto 0)
   );
 end DISPLAY;
 
@@ -27,7 +28,7 @@ architecture Behavioral of DISPLAY is
  
 begin
     ANODE <= anode_i;
-
+    ANODO_A<= "1111";
     strober: process(RST_N, CLK)
         subtype count_t is integer range 0 to FACTOR - 1;
         variable count : count_t; 

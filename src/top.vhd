@@ -16,7 +16,8 @@ entity top is
         LEDRGB_modo       : out std_logic_vector(2 downto 0);
         LED               : out std_logic_vector(3 downto 0);
         segmento          : out std_logic_vector(6 downto 0);
-        anodo             : out std_logic_vector(3 downto 0)
+        anodo             : out std_logic_vector(3 downto 0);
+        anodo_a           : out std_logic_vector(3 downto 0)
     );
 end top;
 
@@ -61,7 +62,8 @@ architecture structural of top is
          CLK     : in  STD_LOGIC;
          DONE    :in std_logic;
          SEGMENT : out std_logic_vector(6 downto 0);
-         ANODE   : out std_logic_vector(3 downto 0)
+         ANODE   : out std_logic_vector(3 downto 0);
+         ANODO_A : out std_logic_vector(3 downto 0)
         );
     end component;
     component fsm_Cambiar_contrasena
@@ -185,7 +187,8 @@ Display_inst: DISPLAY
         DONE=>done1_signal,
         CODE_IN=>newcode_signal,
         CLK=>CLK,
-        ANODE=>ANODO,
+        ANODE=>anodo,
+        ANODO_A=>anodo_a,
         SEGMENT=>segmento 
     );
 Comparador_inst: comparador
