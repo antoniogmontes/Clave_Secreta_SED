@@ -12,6 +12,7 @@ entity DISPLAY is
     CODE_IN : in  STD_LOGIC_VECTOR(7 downto 0);
     RST_N   : in  STD_LOGIC;
     CLK     : in  STD_LOGIC;
+    DONE    : in std_logic;
     SEGMENT : out std_logic_vector(6 downto 0);
     ANODE   : out std_logic_vector(3 downto 0)
   );
@@ -58,6 +59,7 @@ begin
 
     muxer: process (anode_i, CODE_IN) 
     begin
+      
         case  anode_i is
             when "0111"=>
                 salida1 <= CODE_IN(7 downto 6);
@@ -70,10 +72,11 @@ begin
             when others=>
                 salida1 <= "XX";
                 
-        end case;     
+        end case;  
+          
     end process;
 
-    Decodificador: process(salida1)
+    Decodificador: process(salida1,DONE)
     begin
         case salida1 is
             when "00"=>
@@ -85,7 +88,7 @@ begin
             when "11" =>
                 SEGMENT <= "0000110";    
             when others =>
-                SEGMENT <= "11111111";    
+                SEGMENT <= "1111111";    
         end case;
     end process;
 end Behavioral;

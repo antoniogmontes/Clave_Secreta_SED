@@ -3,6 +3,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
 
 entity top is
+    generic (
+        CLKIN_FREQ : positive := 100_000_000;
+        RFRSH_FREQ : positive :=         400
+    );
     PORT (
         CLK               : in  std_logic;                  -- Reloj
         boton             : in  std_logic_vector (4 downto 0);
@@ -47,10 +51,15 @@ architecture structural of top is
     
   
     component DISPLAY
+        generic (
+            CLKIN_FREQ : positive := 100_000_000;
+            RFRSH_FREQ : positive :=         400
+        );
         PORT (
          CODE_IN : in  STD_LOGIC_VECTOR(7 downto 0);
          RST_N   : in  STD_LOGIC;
          CLK     : in  STD_LOGIC;
+         DONE    :in std_logic;
          SEGMENT : out std_logic_vector(6 downto 0);
          ANODE   : out std_logic_vector(3 downto 0)
         );
@@ -167,8 +176,13 @@ fsm_cambiar_contrasena_inst: fsm_Cambiar_contrasena
         new_code =>newcode_signal
     );    
 Display_inst: DISPLAY
+    generic map (
+        CLKIN_FREQ => CLKIN_FREQ,
+        RFRSH_FREQ => RFRSH_FREQ
+    )
     PORT MAP(
         RST_N=>RESET,
+        DONE=>done1_signal,
         CODE_IN=>newcode_signal,
         CLK=>CLK,
         ANODE=>ANODO,

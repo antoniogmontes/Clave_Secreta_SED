@@ -22,7 +22,10 @@ begin
     begin
         if rising_edge(CLK) then
         
+            led_RGB<="000";
+            
             if mode = '0' and DONE0 ='1'then                          -- MODO DESBLOQUEAR                                                       
+                
                 if (comparador = code_In) then  -- Comparamos la contraseña introducida con la guardada
                     led_RGB <= "010";                   -- Led verde CORRECTO
                 else 
