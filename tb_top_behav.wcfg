@@ -11,14 +11,17 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
-      <ZoomEndTime time="21.500000001 ms"></ZoomEndTime>
-      <Cursor1Time time="7.000000000 ms"></Cursor1Time>
+      <ZoomEndTime time="143.700000001 ms"></ZoomEndTime>
+      <Cursor1Time time="2,000.000000000 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="263"></NameColumnWidth>
-      <ValueColumnWidth column_width="198"></ValueColumnWidth>
+      <ValueColumnWidth column_width="168"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="9" />
+   <wave_markers>
+      <marker time="5312500000" label="" />
+   </wave_markers>
    <wvobject fp_name="/tb_top/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -29,6 +32,13 @@
       <obj_property name="Radix">BINARYRADIX</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_top/dut/ce_signal" type="array">
+      <obj_property name="ElementShortName">ce_signal[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ce_signal[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_top/SWITCH" type="logic">
       <obj_property name="ElementShortName">SWITCH</obj_property>
       <obj_property name="ObjectShortName">SWITCH</obj_property>
@@ -37,65 +47,113 @@
       <obj_property name="ElementShortName">RESET</obj_property>
       <obj_property name="ObjectShortName">RESET</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/LEDRGB_comparador" type="array">
-      <obj_property name="ElementShortName">LEDRGB_comparador[2:0]</obj_property>
-      <obj_property name="ObjectShortName">LEDRGB_comparador[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/LEDRGB_modo" type="array">
-      <obj_property name="ElementShortName">LEDRGB_modo[2:0]</obj_property>
-      <obj_property name="ObjectShortName">LEDRGB_modo[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/LED" type="array">
-      <obj_property name="ElementShortName">LED[3:0]</obj_property>
-      <obj_property name="ObjectShortName">LED[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/segmento" type="array">
-      <obj_property name="ElementShortName">segmento[6:0]</obj_property>
-      <obj_property name="ObjectShortName">segmento[6:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
+   <wvobject fp_name="group66" type="group">
+      <obj_property name="label">fsm_desbloquear</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_top/dut/fsm_Desbloquear_inst/num" type="array">
+         <obj_property name="ElementShortName">num[1:0]</obj_property>
+         <obj_property name="ObjectShortName">num[1:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_Desbloquear_inst/next_state" type="other">
+         <obj_property name="ElementShortName">next_state</obj_property>
+         <obj_property name="ObjectShortName">next_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_Desbloquear_inst/current_state" type="other">
+         <obj_property name="ElementShortName">current_state</obj_property>
+         <obj_property name="ObjectShortName">current_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_Desbloquear_inst/next_codigo" type="array">
+         <obj_property name="ElementShortName">next_codigo[7:0]</obj_property>
+         <obj_property name="ObjectShortName">next_codigo[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_Desbloquear_inst/current_codigo" type="array">
+         <obj_property name="ElementShortName">current_codigo[7:0]</obj_property>
+         <obj_property name="ObjectShortName">current_codigo[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_Desbloquear_inst/DONE0" type="logic">
+         <obj_property name="ElementShortName">DONE0</obj_property>
+         <obj_property name="ObjectShortName">DONE0</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/tb_top/anodo" type="array">
-      <obj_property name="ElementShortName">anodo[3:0]</obj_property>
-      <obj_property name="ObjectShortName">anodo[3:0]</obj_property>
+   <wvobject fp_name="group119" type="group">
+      <obj_property name="label">comparador</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/mode" type="logic">
+         <obj_property name="ElementShortName">mode</obj_property>
+         <obj_property name="ObjectShortName">mode</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/new_Code" type="array">
+         <obj_property name="ElementShortName">new_Code[7:0]</obj_property>
+         <obj_property name="ObjectShortName">new_Code[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/code_In" type="array">
+         <obj_property name="ElementShortName">code_In[7:0]</obj_property>
+         <obj_property name="ObjectShortName">code_In[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/DONE0" type="logic">
+         <obj_property name="ElementShortName">DONE0</obj_property>
+         <obj_property name="ObjectShortName">DONE0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/DONE1" type="logic">
+         <obj_property name="ElementShortName">DONE1</obj_property>
+         <obj_property name="ObjectShortName">DONE1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/led_RGB" type="array">
+         <obj_property name="ElementShortName">led_RGB[2:0]</obj_property>
+         <obj_property name="ObjectShortName">led_RGB[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/Comparador_inst/comparador" type="array">
+         <obj_property name="ElementShortName">comparador[7:0]</obj_property>
+         <obj_property name="ObjectShortName">comparador[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_top/dut/newcode_signal" type="array">
+      <obj_property name="ElementShortName">newcode_signal[7:0]</obj_property>
+      <obj_property name="ObjectShortName">newcode_signal[7:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/dut/Display_inst/salida1" type="array">
-      <obj_property name="ElementShortName">salida1[1:0]</obj_property>
-      <obj_property name="ObjectShortName">salida1[1:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/num" type="array">
-      <obj_property name="ElementShortName">num[1:0]</obj_property>
-      <obj_property name="ObjectShortName">num[1:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/codigo" type="array">
-      <obj_property name="ElementShortName">codigo[7:0]</obj_property>
-      <obj_property name="ObjectShortName">codigo[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/new_Code" type="array">
-      <obj_property name="ElementShortName">new_Code[7:0]</obj_property>
-      <obj_property name="ObjectShortName">new_Code[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/Display_inst/CODE_IN" type="array">
-      <obj_property name="ElementShortName">CODE_IN[7:0]</obj_property>
-      <obj_property name="ObjectShortName">CODE_IN[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/codigo" type="array">
-      <obj_property name="ElementShortName">codigo[7:0]</obj_property>
-      <obj_property name="ObjectShortName">codigo[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/current_state" type="other">
-      <obj_property name="ElementShortName">current_state</obj_property>
-      <obj_property name="ObjectShortName">current_state</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/next_state" type="other">
-      <obj_property name="ElementShortName">next_state</obj_property>
-      <obj_property name="ObjectShortName">next_state</obj_property>
+   <wvobject fp_name="group26" type="group">
+      <obj_property name="label">cambia clave</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/DONE1" type="logic">
+         <obj_property name="ElementShortName">DONE1</obj_property>
+         <obj_property name="ObjectShortName">DONE1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/next_state" type="other">
+         <obj_property name="ElementShortName">next_state</obj_property>
+         <obj_property name="ObjectShortName">next_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/current_state" type="other">
+         <obj_property name="ElementShortName">current_state</obj_property>
+         <obj_property name="ObjectShortName">current_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/new_Code" type="array">
+         <obj_property name="ElementShortName">new_Code[7:0]</obj_property>
+         <obj_property name="ObjectShortName">new_Code[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/current_codigo" type="array">
+         <obj_property name="ElementShortName">current_codigo[7:0]</obj_property>
+         <obj_property name="ObjectShortName">current_codigo[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/next_codigo" type="array">
+         <obj_property name="ElementShortName">next_codigo[7:0]</obj_property>
+         <obj_property name="ObjectShortName">next_codigo[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/dut/fsm_cambiar_contrasena_inst/num" type="array">
+         <obj_property name="ElementShortName">num[1:0]</obj_property>
+         <obj_property name="ObjectShortName">num[1:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>
